@@ -1,0 +1,250 @@
+{
+    "rdbms": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dbname": "",
+    "user": "root",
+    "password": "",
+    "tables": [],
+    "convert": {
+        "enabled": false,
+        "items": [
+            {
+                "table": "user",
+                "column": "password",
+                "method": {
+                    //after_db_read: name of the method which is called after reading from database, signature: void([const] std::shared_ptr [&])
+                    "after_db_read": "decrypt_password",
+                    //before_db_write: name of the method which is called before writing to database, signature: void([const] std::shared_ptr [&])
+                    "before_db_write": "encrypt_password"
+                },
+                "includes": [
+                    "\"file_local_search_path.h\"",
+                    "<file_in_global_search_path.h>"
+                ]
+            }
+        ]
+    },
+    "relationships": {
+        "enabled": false,
+        "items": [
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "score_history",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "resource_groups",
+                "target_table_alias": "",
+                "target_key": "group_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "resource_groups_members",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "buckets",
+                "target_table_alias": "",
+                "target_key": "bucket_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "folders",
+                "target_table_alias": "",
+                "target_key": "folder_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "objects",
+                "target_table_alias": "",
+                "target_key": "object_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "resource_permissions",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "user_stocks",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "user_transactions",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "user",
+                "original_table_alias": "",
+                "original_key": "user_id",
+                "target_table_name": "bank",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "resource_groups",
+                "original_table_alias": "",
+                "original_key": "group_id",
+                "target_table_name": "resource_groups_members",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "buckets",
+                "original_table_alias": "",
+                "original_key": "bucket_id",
+                "target_table_name": "folders",
+                "target_table_alias": "",
+                "target_key": "folder_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "folders",
+                "original_table_alias": "",
+                "original_key": "folder_id",
+                "target_table_name": "folders",
+                "target_table_alias": "",
+                "target_key": "folder_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "buckets",
+                "original_table_alias": "",
+                "original_key": "bucket_id",
+                "target_table_name": "objects",
+                "target_table_alias": "",
+                "target_key": "object_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "folders",
+                "original_table_alias": "",
+                "original_key": "folder_id",
+                "target_table_name": "objects",
+                "target_table_alias": "",
+                "target_key": "object_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "objects",
+                "original_table_alias": "",
+                "original_key": "object_id",
+                "target_table_name": "object_locations",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "servers",
+                "original_table_alias": "",
+                "original_key": "server_id",
+                "target_table_name": "object_locations",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "resource_groups",
+                "original_table_alias": "",
+                "original_key": "group_id",
+                "target_table_name": "resource_permissions",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "stock",
+                "original_table_alias": "",
+                "original_key": "stock_id",
+                "target_table_name": "user_stocks",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "stock",
+                "original_table_alias": "",
+                "original_key": "stock_id",
+                "target_table_name": "user_transactions",
+                "target_table_alias": "",
+                "target_key": "id",
+                "enable_reverse": true
+            }
+        ]
+    },
+    "restful_api_controllers": {
+        "enabled": false,
+        // resource_uri: The URI to access the resource, the default value 
+        // is '/*' in which the asterisk represents the table name.
+        // If this option is set to a empty string, the URI is composed of the namespaces and the class name.
+        "resource_uri": "/*",
+        // class_name: "Restful*Ctrl" by default, the asterisk represents the table name.
+        // This option can contain namespaces.
+        "class_name": "Restful*Ctrl",
+        "filters": [],
+        "db_client": {
+            "name": "default",
+            "is_fast": false
+        },
+        "directory": "controllers",
+        "generate_base_only": false
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "ssl": {
+        "cert": "./https.pem",
+        "key": "./https.key"
+    },
+    "listeners": [
+        {
+            "address": "0.0.0.0",
+            "port": 80,
+            "https": false
+        },
+        {
+            "address": "0.0.0.0",
+            "port": 443,
+            "https": false,
+            "cert": "./https.pem",
+            "key": "./https.key",
+            "use_old_tls": false,
+            "ssl_conf": []
+        }
+    ],
+    "db_clients": [
+        {
+            "rdbms": "mysql",
+            "host": "127.0.0.1",
+            "port": 3306,
+            "dbname": "test",
+            "user": "root",
+            "passwd": "",
+            "number_of_connections": 1,
+            "timeout": 30
+        }
+    ],
+    "redis_clients": [
+        {
+            "host": "127.0.0.1",
+            "port": 6379,
+            "username": "",
+            "passwd": "",
+            "db": 0,
+            "number_of_connections": 1,
+            "timeout": 30
+        }
+    ],
+    "app": {
+        "number_of_threads": 0,
+        "upload_path": "./archives",
+        "max_connections": 100000,
+        "max_connections_per_ip": 50,
+        "load_dynamic_views": false,
+        "dynamic_views_path": [
+            "./views"
+        ],
+        "dynamic_views_output_path": "",
+        "log": {
+            "log_path": "./log",
+            "logfile_base_name": "archives",
+            "log_size_limit": 100000000,
+            "log_level": "INFO"
+        },
+        "relaunch_on_error": true,
+        "use_sendfile": true,
+        "simple_controllers_map": [
+            {
+                "path": "/path/name",
+                "controller": "controllerClassName",
+                "http_methods": [
+                    "get",
+                    "post"
+                ],
+                "filters": [
+                    "FilterClassName"
+                ]
+            }
+        ],
+        "idle_connection_timeout": 60,
+        "server_header_field": "Archives Of Wind",
+        "enable_server_header": true,
+        "enable_date_header": true,
+        "keepalive_requests": 0,
+        "gzip_static": false,
+        "br_static": false,
+        "client_max_body_size": "",
+        "client_max_memory_body_size": "128K"
+    },
+    "plugins": [
+        {
+            "name": "",
+            "dependencies": [],
+            "config": {
+                "ssl_redirect_exempt": [
+                    ".*\\.jpg"
+                ],
+                "secure_ssl_host": "127.0.0.1:8849"
+            }
+        }
+    ],
+    "custom_config": {
+        "host_ip": "1.1.1.1",
+        "host_port": 8080,
+        "service_name": "archives_of_wind",
+        "cookie_expires": 259200,
+        "access_key": "",
+        "secret_key": "",
+        "storage_types": [
+            "standard_archives",
+            "standard_ia_archives",
+            "intelligent_tiering_archives",
+            "one_zone_archives",
+            "one_zone_ia_archives"
+        ],
+        "storage_classification": "one_zone_archives",
+        "kafka_clients": [
+            {
+                "host": "",
+                "port": 9092,
+                "topic": ""
+            }
+        ],
+        "load_balancer": {
+            "host": "",
+            "port": 8080
+        }
+    }
+}
